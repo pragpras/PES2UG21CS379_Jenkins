@@ -5,8 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    echo 'Building the project...'
-                    // Add your build commands here
+                    // Compile the .cpp file using a shell script
+                    def cppFileName = 'newfile.cpp'
+                    sh "g++ -o ${cppFileName.replaceAll('.cpp', '')} ${cppFileName}"
                 }
             }
         }
@@ -14,18 +15,16 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    echo 'Running tests...'
-                    // Add your test commands here
+                    // Print the output of the compiled .cpp file using a shell script
+                    def executableName = 'newfile'
+                    sh "./${executableName}"
                 }
             }
         }
 
         stage('Deploy') {
             steps {
-                script {
-                    echo 'Deploying the application...'
-                    // Add your deployment commands here
-                }
+                echo 'deploy'
             }
         }
     }
