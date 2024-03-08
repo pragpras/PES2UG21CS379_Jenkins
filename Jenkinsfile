@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Compile the .cpp file using a shell script
-                    def cppFileName = 'newfile.cpp'
+                    def cppFileName = 'wrongnewfile.cpp'
                     sh "g++ -o ${cppFileName.replaceAll('.cpp', '')} ${cppFileName}"
                 }
             }
